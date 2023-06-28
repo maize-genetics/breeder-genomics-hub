@@ -25,3 +25,9 @@ docker compose -f digital-ocean.yml up -d
     * `napb2023.maizegenetics.net:<443,80>` -> JupyterHub (plus R, packages, and BrAPI helper)
     * `napb2023.maizegenetics.net:8080` -> PHG BrAPI Server
     * *Postgres is not available on an external port*
+* Extend JupyterHub container to install:
+    * R and R packages
+    * BrAPI Helper
+    * JupyterHub-specific packages
+        * Docker spawner: `python3 -m pip install dockerspawner`
+        * ORCID Authenticator fork (`OrcidOAuthenticator`): https://github.com/matthewwiese/oauthenticator

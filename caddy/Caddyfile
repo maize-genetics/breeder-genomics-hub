@@ -1,0 +1,3 @@
+napb2023.maizegenetics.net {
+    reverse_proxy jupyterhub:8000
+}

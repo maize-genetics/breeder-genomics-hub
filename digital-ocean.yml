@@ -1,5 +1,22 @@
 version: '3.9'
 services:
+#  caddy
+#    name: caddy
+#    restart: unless-stopped
+#    image: caddy:2.6.4-alpine
+#    ports:
+#      - 80:80
+#      - 443:443
+#    volumes:
+#      - ./caddy/Caddyfile:/etc/caddy/Caddyfile
+#      - ./caddy/data:/data
+#      - ./caddy/config:/config
+#  jupyterhub:
+#    name: jupyterhub
+#    restart: unless-stopped
+#    image: jupyterhub/jupyterhub:4.0
+#    ports:
+#      - 127.0.0.1:8000:8000
   phg_brapi:
     name: phg_brapi
     image: maizegenetics/phg_brapi

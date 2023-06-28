@@ -783,7 +783,7 @@ c = get_config()  #noqa
 #    - localprocess: jupyterhub.spawner.LocalProcessSpawner
 #    - simple: jupyterhub.spawner.SimpleLocalProcessSpawner
 #  Default: 'jupyterhub.spawner.LocalProcessSpawner'
-# c.JupyterHub.spawner_class = 'jupyterhub.spawner.LocalProcessSpawner'
+c.JupyterHub.spawner_class = 'dockerspawner.DockerSpawner' # Spawn a new Docker container for each user
 
 ## Path to SSL certificate file for the public facing interface of the proxy
 #  
@@ -1022,7 +1022,7 @@ c = get_config()  #noqa
 #  - Start with `/notebooks` instead of `/tree` if `default_url` points to a notebook instead of a directory.
 #  - You can set this to `/lab` to have JupyterLab start by default, rather than Jupyter Notebook.
 #  Default: ''
-# c.Spawner.default_url = ''
+c.Spawner.default_url = '/lab'
 
 ## Disable per-user configuration of single-user servers.
 #  
@@ -1136,7 +1136,7 @@ c = get_config()  #noqa
 #  implement this support. A custom spawner **must** add support for this setting
 #  for it to be enforced.
 #  Default: None
-# c.Spawner.mem_limit = None
+c.Spawner.mem_limit = "1G"
 
 ## Path to the notebook directory for the single-user server.
 #  
