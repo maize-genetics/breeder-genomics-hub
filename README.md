@@ -9,6 +9,11 @@ POSTGRES_PASSWORD=<Maize 2.1 Password>
 
 Postgres will check the `POSTGRES_PASSWORD` by default in `prod.env`. We can do the same for the PHG BrAPI server.
 
+Additionally, mount a [DigitalOcean Volume](https://docs.digitalocean.com/products/volumes/details/features/) containing the Maize 2.1 data to:
+```
+/mnt/volume_nyc3_01/maize_2_1_phg/data
+```
+
 ### Running
 ```
 docker compose -f digital-ocean.yml up -d
