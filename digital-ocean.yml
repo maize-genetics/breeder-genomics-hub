@@ -1,0 +1,28 @@
+version: '3.9'
+services:
+  phg_brapi:
+    name: phg_brapi
+    image: maizegenetics/phg_brapi
+    restart: unless-stopped
+    deploy:
+        resources:
+            limits:
+              memory: 175G
+            reservations:
+              memory: 150G
+    volumes:
+      - ./brapi:/phg/resources
+    environment:
+      JAVA_OPTS: "-Xmx170g -Xms170g"
+    ports:
+       - 8080:8080
+  maize_2_1_phg_db:
+    name: maize_db
+    image: postgres:14
+    restart: unless-stopped
+    environment:
+      - prod.env
+    volumes:
+      - /mnt/volume_nyc3_01/maize_2_1_phg/data:/var/lib/postgresql/data
+    ports:
+      - 127.0.0.1:5432:5432 # This binds to localhost, not 0.0.0.0
