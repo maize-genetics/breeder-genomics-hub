@@ -21,3 +21,7 @@ docker compose -f digital-ocean.yml up -d
 
 ### To-do
 * PHG parse environment `$VARIABLES` in `config.txt` so that we don't have to commit passwords
+* Add Traefik (and JupyterHub) container, proxying as following:
+    * `napb2023.maizegenetics.net:<443,80>` -> JupyterHub (plus R, packages, and BrAPI helper)
+    * `napb2023.maizegenetics.net:8080` -> PHG BrAPI Server
+    * *Postgres is not available on an external port*
