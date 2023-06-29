@@ -1,0 +1,13 @@
+name: science
+channels:
+  - maize-genetics
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - python=3.9
+  - ipython
+  - ipykernel
+  - phg
+  - liquibase
+  - groovy
