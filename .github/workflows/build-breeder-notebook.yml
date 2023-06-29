@@ -25,4 +25,4 @@ jobs:
         with:
           context: "{{defaultContext}}:breeder-notebook"
           push: true
-          tags: maize-genetics/breeder-notebook:latest
+          tags: maizegenetics/breeder-notebook:latest
