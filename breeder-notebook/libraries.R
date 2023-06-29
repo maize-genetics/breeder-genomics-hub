@@ -9,6 +9,7 @@ install_version("BiocManager", version = "1.30.21", repos = "http://cran.us.r-pr
 # Bioconductor
 BiocManager::install(version = "3.16") # We're using R 4.2, so can't use most recent version
 BiocManager::install("SummarizedExperiment")
+BiocManager::install("ggtree")
 
 # GitHub, etc
 remotes::install_github("maize-genetics/rtassel")
