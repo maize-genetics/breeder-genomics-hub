@@ -1,14 +1,78 @@
-name: science
+name: mendel
 channels:
   - maize-genetics
+  - jetbrains
   - conda-forge
   - bioconda
   - defaults
 dependencies:
+  # Python
   - python=3.9
+  - altair
+  - beautifulsoup4
+  - bokeh
+  - bottleneck
+  - cloudpickle
+  - conda-forge::blas=*=openblas
+  - cython
+  - dask
+  - dill
+  - h5py
+  - ipympl
+  - ipywidgets
+  - jupyterlab-git
+  - matplotlib-base
+  - numba
+  - numexpr
+  - openpyxl
+  - pandas
+  - patsy
+  - protobuf
+  - pytables
+  - scikit-image
+  - scikit-learn
+  - scipy
+  - seaborn
+  - sqlalchemy
+  - statsmodels
+  - sympy
+  - widgetsnbextension
+  - xlrd
+
+  # Jupyter
   - ipython
   - ipykernel
   - jupyterlab_templates
+
+  # Buckler Lab
   - phg
   - liquibase
   - groovy
+
+  # R
+  - r-base >=4.3.0
+  - r-caret
+  - r-crayon
+  - r-e1071
+  - r-forecast
+  - r-hexbin
+  - r-htmltools
+  - r-htmlwidgets
+  - r-irkernel
+  - r-nycflights13
+  - r-randomforest
+  - r-rcurl
+  - r-rmarkdown
+  - r-rodbc
+  - r-rsqlite
+  - r-shiny
+  - r-tidymodels
+  - r-tidyverse
+  - r-rodbc
+  - r-rjava
+  - unixodbc
+  - gxx_linux-64
+
+  # Misc
+  - kotlin-jupyter-kernel
+  - nb_conda_kernels # So that conda environment will be active within a Python notebook
