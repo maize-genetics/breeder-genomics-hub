@@ -31,3 +31,7 @@ docker compose -f digital-ocean.yml up -d
     * JupyterHub-specific packages
         * Docker spawner: `python3 -m pip install dockerspawner`
         * ORCID Authenticator fork (`OrcidOAuthenticator`): https://github.com/matthewwiese/oauthenticator
+
+# Future Ideas
+* Build "releases" containing Compose file, etc using GitHub Actions and hosted on Releases - deployment would consistent of downloading the archive and running some simple wrapper script e.g. `./bgh.sh`
+* Hosted demo that allows ORCID login with an example PHG BrAPI server that wipes data/accounts every 24 hours (crontab?)
