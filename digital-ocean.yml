@@ -1,26 +1,40 @@
 version: '3.9'
 services:
-#  caddy
-#    name: caddy
-#    restart: unless-stopped
-#    image: caddy:2.6.4-alpine
-#    ports:
-#      - 80:80
-#      - 443:443
-#    volumes:
-#      - ./caddy/Caddyfile:/etc/caddy/Caddyfile
-#      - ./caddy/data:/data
-#      - ./caddy/config:/config
-#  jupyterhub:
-#    name: jupyterhub
-#    restart: unless-stopped
-#    image: jupyterhub/jupyterhub:4.0
-#    ports:
-#      - 127.0.0.1:8000:8000
+  caddy:
+    container_name: caddy
+    restart: unless-stopped
+    image: caddy:2.6.4-alpine
+    networks:
+      - hub_net
+      - brapi_net
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ./caddy/Caddyfile:/etc/caddy/Caddyfile
+      - ./caddy/data:/data
+      - ./caddy/config:/config
+  jupyterhub:
+    container_name: jupyterhub
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: JupyterHub.dockerfile
+    networks:
+      - hub_net
+    ports:
+      - 127.0.0.1:8000:8000
+    volumes:
+      - "./jupyterhub_config.py:/srv/jupyterhub/jupyterhub_config.py:ro"
+      - "/run/user/1001/docker.sock:/var/run/docker.sock" # Access rootless socket associated with user
+    environment:
+      - DUMMY
   phg_brapi:
-    name: phg_brapi
+    container_name: phg_brapi
     image: maizegenetics/phg_brapi
     restart: unless-stopped
+    networks:
+      - brapi_net
     deploy:
         resources:
             limits:
@@ -34,12 +48,20 @@ services:
     ports:
        - 8080:8080
   maize_2_1_phg_db:
-    name: maize_db
+    container_name: maize_db
     image: postgres:14
     restart: unless-stopped
+    networks:
+      - brapi_net
     environment:
       - prod.env
     volumes:
       - /mnt/volume_nyc3_01/maize_2_1_phg/data:/var/lib/postgresql/data
     ports:
       - 127.0.0.1:5432:5432 # This binds to localhost, not 0.0.0.0
+
+networks:
+  hub_net:
+    name: hub_net
+  brapi_net:
+    name: brapi_net
