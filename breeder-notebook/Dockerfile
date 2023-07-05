@@ -57,7 +57,8 @@ RUN "${CONDA_DIR}/envs/${conda_env}/bin/python" -m jupyter kernelspec remove -f 
     fix-permissions "/home/${NB_USER}"
 
 # Additional pip installs
-#RUN "${CONDA_DIR}/envs/${conda_env}/bin/pip" install --no-cache-dir jupyterhub==1.4.1
+# NOTE: JupyterHub package version must match deployed Hub version
+RUN "${CONDA_DIR}/envs/${conda_env}/bin/pip" install --no-cache-dir jupyterhub==4.0.1
 
 # Install R libraries (within Conda R environment, not system R)
 # Source is necessary, see: https://github.com/conda/conda/issues/7980#issuecomment-441358406
