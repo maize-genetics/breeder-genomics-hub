@@ -4,10 +4,10 @@
 ### Setup
 Create a `prod.env` file like the contents:
 ```
-POSTGRES_PASSWORD=<Maize 2.1 Password>
+PGPASSWORD=<Maize 2.1 Password>
 ```
 
-Postgres will check the `POSTGRES_PASSWORD` by default in `prod.env`. We can do the same for the PHG BrAPI server.
+Postgres will check the `PGPASSWORD` by default in `prod.env`. We can do the same for the PHG BrAPI server.
 
 Additionally, mount a [DigitalOcean Volume](https://docs.digitalocean.com/products/volumes/details/features/) containing the Maize 2.1 data to:
 ```
