@@ -38,9 +38,9 @@ services:
     deploy:
         resources:
             limits:
-              memory: 175G
+              memory: 40G
             reservations:
-              memory: 150G
+              memory: 30G
     volumes:
       - ./brapi:/phg/resources
     environment:
