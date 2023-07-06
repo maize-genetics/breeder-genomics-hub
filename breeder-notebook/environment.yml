@@ -1,13 +1,12 @@
-name: mendel
 channels:
   - maize-genetics
   - jetbrains
   - conda-forge
   - bioconda
-  - defaults
+  - nodefaults
 dependencies:
   # Python
-  - python=3.9
+  - python
   - altair
   - beautifulsoup4
   - bokeh
@@ -75,4 +74,3 @@ dependencies:
 
   # Misc
   - kotlin-jupyter-kernel
-  - nb_conda_kernels # So that conda environment will be active within a Python notebook

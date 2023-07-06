@@ -14,3 +14,6 @@ BiocManager::install("ggtree")
 # GitHub, etc
 remotes::install_github("maize-genetics/rtassel", dependencies = TRUE)
 remotes::install_github("maize-genetics/rphg",    dependencies = TRUE)
+
+# Link R kernel with Jupyter
+IRkernel::installspec()
