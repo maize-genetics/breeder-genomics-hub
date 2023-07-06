@@ -46,6 +46,9 @@ RUN mamba env update --name base --file /tmp/environment.yml
 # NOTE: JupyterHub package version must match deployed Hub version
 RUN pip install --no-cache-dir jupyterhub==4.0.1
 
+# Pull BrAPI Helper package from NAPB workshop file server and install it
+RUN cd /tmp && wget https://napb2023.maizegenetics.net/files/jupyterlab_brapi_helper-0.1.0.tar.gz && pip install jupyterlab_brapi_helper-0.1.0.tar.gz
+
 # Install R libraries
 ADD libraries.R /tmp/libraries.R
 RUN Rscript /tmp/libraries.R
