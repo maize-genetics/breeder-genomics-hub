@@ -1,3 +1,14 @@
 napb2023.maizegenetics.net {
-    reverse_proxy jupyterhub:8000
+    handle_path /files/* {
+        root * /files
+        file_server {
+            hide .gitkeep
+        }
+    }
+    handle /brapi/* {
+        reverse_proxy phg_brapi:8080
+    }
+    handle {
+        reverse_proxy jupyterhub:8000
+    }
 }

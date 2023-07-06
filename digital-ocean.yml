@@ -14,6 +14,7 @@ services:
       - ./caddy/Caddyfile:/etc/caddy/Caddyfile
       - ./caddy/data:/data
       - ./caddy/config:/config
+      - ./caddy/files:/files # To host files we need to be publicly accessible (e.g. Francisco's BrAPI Helper install script)
   jupyterhub:
     container_name: jupyterhub
     restart: unless-stopped
@@ -46,7 +47,7 @@ services:
     environment:
       JAVA_OPTS: "-Xmx170g -Xms170g"
     ports:
-       - 8080:8080
+       - 127.0.0.1:8080:8080
   maize_2_1_phg_db:
     container_name: maize_db
     image: postgres:14
@@ -58,7 +59,7 @@ services:
     volumes:
       - /mnt/volume_nyc3_01/maize_2_1_phg/data:/var/lib/postgresql/data
     ports:
-      - 127.0.0.1:5432:5432 # This binds to localhost, not 0.0.0.0
+      - 127.0.0.1:5432:5432
 
 networks:
   hub_net:
