@@ -27,9 +27,8 @@ services:
       - 127.0.0.1:8000:8000
     volumes:
       - "./jupyterhub_config.py:/srv/jupyterhub/jupyterhub_config.py:ro"
+      - "./prod.env:/srv/jupyterhub/prod.env:ro"
       - "/run/user/1001/docker.sock:/var/run/docker.sock" # Access rootless socket associated with user
-    environment:
-      - DUMMY
   phg_brapi:
     container_name: phg_brapi
     image: maizegenetics/phg_brapi
@@ -45,7 +44,7 @@ services:
     volumes:
       - ./brapi:/phg/resources
     environment:
-      JAVA_OPTS: "-Xmx170g -Xms170g"
+      JAVA_OPTS: "-Xmx40g -Xms30g"
     ports:
        - 127.0.0.1:8080:8080
   maize_2_1_phg_db:
@@ -54,8 +53,7 @@ services:
     restart: unless-stopped
     networks:
       - brapi_net
-    environment:
-      - prod.env
+    env_file: prod.env
     volumes:
       - /mnt/volume_nyc3_01/maize_2_1_phg/data:/var/lib/postgresql/data
     ports:
