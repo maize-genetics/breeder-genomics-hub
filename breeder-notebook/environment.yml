@@ -42,6 +42,7 @@ dependencies:
   - ipython
   - ipykernel
   - jupyterlab_templates
+  - jupyter-resource-usage
 
   # Buckler Lab
   - phg
