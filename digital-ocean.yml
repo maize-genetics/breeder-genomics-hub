@@ -31,7 +31,7 @@ services:
       - "/run/user/1001/docker.sock:/var/run/docker.sock" # Access rootless socket associated with user
   phg_brapi:
     container_name: phg_brapi
-    image: maizegenetics/phg_brapi
+    image: maizegenetics/phg_brapi:1.2
     restart: unless-stopped
     networks:
       - brapi_net
