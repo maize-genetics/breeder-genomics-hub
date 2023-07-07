@@ -10,7 +10,7 @@ c.JupyterHub.spawner_class = DockerSpawner
 c.DockerSpawner.image = "maizegenetics/breeder-notebook:latest"
 
 c.Spawner.default_url = '/lab'
-c.Spawner.mem_limit = "1G"
+c.Spawner.mem_limit = "1.5G"
 
 c.DockerSpawner.cmd = "start-singleuser.sh"
 
