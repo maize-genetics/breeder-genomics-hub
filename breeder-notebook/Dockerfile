@@ -6,6 +6,9 @@ SHELL ["/bin/bash", "-c"]
 USER root
 RUN apt-get update  --yes &&                      \
     apt-get install --yes --no-install-recommends \
+    less                                          \
+    vim                                           \
+    nano                                          \
     build-essential                               \
     gfortran                                      \
     gcc                                           \
@@ -63,3 +66,6 @@ RUN Rscript /tmp/libraries.R
 RUN cd /home/${NB_USER}                                             && \
     wget https://napb2023.maizegenetics.net/files/templates.tar.gz  && \
     tar -xvf templates.tar.gz
+
+# Jupyter Notebook config
+ADD jupyter_notebook_config.py /home/${NB_USER}/.jupyter/jupyter_notebook_config.py
