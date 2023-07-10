@@ -58,3 +58,8 @@ RUN cd /home/${NB_USER}                                                       &&
 # Install R libraries
 ADD libraries.R /tmp/libraries.R
 RUN Rscript /tmp/libraries.R
+
+# ILCI Templates
+RUN cd /home/${NB_USER}                                             && \
+    wget https://napb2023.maizegenetics.net/files/templates.tar.gz  && \
+    tar -xvf templates.tar.gz

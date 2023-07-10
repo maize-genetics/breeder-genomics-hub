@@ -32,3 +32,8 @@ c.OrcidOAuthenticator.oauth_callback_url = "https://napb2023.maizegenetics.net/h
 c.OrcidOAuthenticator.client_id = os.environ.get("OAUTH_CLIENT_ID")
 c.OrcidOAuthenticator.client_secret = os.environ.get("OAUTH_CLIENT_SECRET")
 c.OrcidOAuthenticator.allow_all = True # Allow any ORCID iD for the workshop
+
+c.JupyterLabTemplates.allowed_extensions = ["*.ipynb"]
+c.JupyterLabTemplates.template_dirs = ["/home/jovyan/templates"]
+c.JupyterLabTemplates.include_default = False
+c.JupyterLabTemplates.include_core_paths = False
