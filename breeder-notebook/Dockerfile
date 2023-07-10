@@ -45,6 +45,10 @@ USER ${NB_UID}
 ADD environment.yml /tmp/environment.yml
 RUN mamba env update --name base --file /tmp/environment.yml
 
+# Install R libraries
+ADD libraries.R /tmp/libraries.R
+RUN Rscript /tmp/libraries.R
+
 # Additional pip installs
 # NOTE: JupyterHub package version must match deployed Hub version
 RUN pip install --no-cache-dir jupyterhub==4.0.1
@@ -57,10 +61,6 @@ RUN cd /home/${NB_USER}                                                       &&
     wget https://napb2023.maizegenetics.net/files/ilci_workshop_test_01.ipynb && \
     wget https://napb2023.maizegenetics.net/files/napb_demo_data.tar.gz       && \
     tar -xvf napb_demo_data.tar.gz
-
-# Install R libraries
-ADD libraries.R /tmp/libraries.R
-RUN Rscript /tmp/libraries.R
 
 # ILCI Templates
 RUN cd /home/${NB_USER}                                             && \
