@@ -1,4 +1,4 @@
-FROM jupyter/base-notebook:lab-4.0.1
+FROM jupyter/base-notebook:lab-3.6.3
 LABEL maintainer="Matt Wiese <matthew.wiese@cornell.edu>"
 SHELL ["/bin/bash", "-c"]
 
