@@ -1,4 +1,5 @@
-install.packages("devtools", dependencies = TRUE, repos = "http://cran.us.r-project.org")
+# TODO: `destdir = "/tmp/R"`
+install.packages("QBMS", dependencies = TRUE, repos = "http://cran.us.r-project.org")
 
 # CRAN
 devtools::install_version("sommer",      version = "4.3.1",   dependencies = TRUE, repos = "http://cran.us.r-project.org")
@@ -12,8 +13,9 @@ BiocManager::install("SummarizedExperiment")
 BiocManager::install("ggtree")
 
 # GitHub, etc
-remotes::install_github("maize-genetics/rtassel", dependencies = TRUE)
-remotes::install_github("maize-genetics/rphg",    dependencies = TRUE)
+remotes::install_github("maize-genetics/rtassel",    dependencies = TRUE)
+remotes::install_github("maize-genetics/rphg",       dependencies = TRUE)
+remotes::install_github("btmonier/r_flapjack_bytes", dependencies = TRUE)
 
 # Link R kernel with Jupyter
 IRkernel::installspec()
