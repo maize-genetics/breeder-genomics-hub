@@ -45,10 +45,12 @@ USER ${NB_UID}
 # Install Conda libraries from environment.yml into base environment
 ADD environment.yml /tmp/environment.yml
 RUN mamba env update --name base --file /tmp/environment.yml
+#RUN --mount=type=cache,target=/opt/conda/pkgs mamba env update --name base --file /tmp/environment.yml
 
 # Install R libraries
 ADD libraries.R /tmp/libraries.R
 RUN Rscript /tmp/libraries.R
+#RUN --mount=type=cache,target=/tmp/R Rscript /tmp/libraries.R
 
 # Additional pip installs
 # NOTE: JupyterHub package version must match deployed Hub version
