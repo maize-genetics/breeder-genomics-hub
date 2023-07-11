@@ -20,18 +20,15 @@ docker compose -f digital-ocean.yml up -d
 ```
 
 ### To-do
-* PHG parse environment `$VARIABLES` in `config.txt` so that we don't have to commit passwords
-* Add Traefik (and JupyterHub) container, proxying as following:
-    * `napb2023.maizegenetics.net:<443,80>` -> JupyterHub (plus R, packages, and BrAPI helper)
-    * `napb2023.maizegenetics.net:8080` -> PHG BrAPI Server
-    * *Postgres is not available on an external port*
-* Extend JupyterHub container to install:
-    * R and R packages
-    * BrAPI Helper
-    * JupyterHub-specific packages
-        * Docker spawner: `python3 -m pip install dockerspawner`
-        * ORCID Authenticator fork (`OrcidOAuthenticator`): https://github.com/matthewwiese/oauthenticator
+/opt/conda/lib/R/library
+* Cache Docker image build on GitHub Actions
+    * Docker layer caching will not necessarily pick up package changes (e.g. R package installs)
+    * Cache Conda and R packages instead, using [`buildx`](https://github.com/docker/buildx)/[BuildKit](https://github.com/moby/buildkit)?
+        * `/opt/conda/pkgs` -> downloaded Conda packages
+        * R `.libPaths()` -> `/opt/conda/lib/R/library` installed R packages (downloaded packages are in random `/tmp` directory due to `destdir=NULL` default)
+* Use JupyterLab 3.x due to compatibility issue with JupyterLab Templates and BrAPI Helper
 
-# Future Ideas
-* Build "releases" containing Compose file, etc using GitHub Actions and hosted on Releases - deployment would consistent of downloading the archive and running some simple wrapper script e.g. `./bgh.sh`
+### Future Ideas
+* PHG parse environment `$VARIABLES` in `config.txt` so that we don't have to commit passwords
+* Build "releases" containing Compose file, etc using GitHub Actions and hosted on Releases - deployment would consist of downloading the archive and running some simple wrapper script e.g. `./bgh.sh`
 * Hosted demo that allows ORCID login with an example PHG BrAPI server that wipes data/accounts every 24 hours (crontab?)
