@@ -70,8 +70,11 @@ dependencies:
   - r-tidyverse
   - r-rodbc
   - r-rjava
+  - r-renv
+  - r-devtools
   - unixodbc
   - gxx_linux-64
 
   # Misc
   - kotlin-jupyter-kernel
+  - bioconda::bioconductor-biocversion>=3.17
