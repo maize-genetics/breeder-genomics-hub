@@ -57,7 +57,8 @@ RUN Rscript /tmp/libraries.R
 RUN pip install --no-cache-dir jupyterhub==4.0.1
 
 # Pull BrAPI Helper package from NAPB workshop file server and install it
-RUN cd /tmp && wget https://napb2023.maizegenetics.net/files/jupyterlab_brapi_helper-0.1.0.tar.gz && pip install jupyterlab_brapi_helper-0.1.0.tar.gz
+#RUN cd /tmp && wget https://napb2023.maizegenetics.net/files/jupyterlab_brapi_helper-0.1.0.tar.gz && pip install jupyterlab_brapi_helper-0.1.0.tar.gz
+RUN cd /tmp && wget https://napb2023.maizegenetics.net/files/brapi_helper_installer.run && chmod +x brapi_helper_installer.run && ./brapi_helper_installer.run
 
 # Pull Brandon's demo notebook and files
 RUN cd /home/${NB_USER}                                                       && \
