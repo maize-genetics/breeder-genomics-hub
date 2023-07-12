@@ -6,6 +6,7 @@ on:
       - 'main'
     paths:
       - 'breeder-notebook/**'
+  workflow_dispatch:
 
 jobs:
   docker:
