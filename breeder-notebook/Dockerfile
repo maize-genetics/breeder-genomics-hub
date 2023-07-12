@@ -39,7 +39,6 @@ RUN apt-get update  --yes &&                      \
     libproj-dev                                   \
     libsqlite3-dev                                \
     libudunits2-dev                               \
-    libnetcdf-dev                                 \
     && rm -rf /var/lib/apt/lists/*
 USER ${NB_UID}
 

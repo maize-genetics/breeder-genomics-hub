@@ -74,6 +74,7 @@ dependencies:
   - r-devtools
   - unixodbc
   - gxx_linux-64
+  - libnetcdf
 
   # Misc
   - kotlin-jupyter-kernel
