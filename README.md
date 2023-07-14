@@ -24,7 +24,7 @@ During the image build process, it pulls the following files:
 * https://napb2023.maizegenetics.net/files/napb_demo_data.tar.gz
 * https://napb2023.maizegenetics.net/files/templates.tar.gz
 
-Ensure these files are present in `breeder-genomics-hub/files/caddy` wherever you run the Compose file. This is a temporary measure until these files (templates, data, etc) are publicly accessible.
+Ensure these files are present in `breeder-genomics-hub/caddy/files` wherever you run the Compose file. This is a temporary measure until these files (templates, data, etc) are publicly accessible.
 
 ### To-do
 * Cache Docker image build on GitHub Actions
