@@ -20,8 +20,10 @@ OAUTH_CLIENT_SECRET=<ORCID Secret>
 The `breeder-notebook` Jupyter Docker stack (using `jupyter/base-notebook`) is built from the [`breeder-notebook/`](./breeder-notebook) directory, using GitHub Actions.
 
 During the image build process, it pulls the following files:
-* https://napb2023.maizegenetics.net/files/brapi_helper_installer.run
+* https://napb2023.maizegenetics.net/files/napb_2023_bgh_demo_01.ipynb
+* https://napb2023.maizegenetics.net/files/napb_2023_bgh_demo_02.ipynb
 * https://napb2023.maizegenetics.net/files/napb_demo_data.tar.gz
+* https://napb2023.maizegenetics.net/files/brapi_helper_installer.run
 * https://napb2023.maizegenetics.net/files/templates.tar.gz
 
 Ensure these files are present in `breeder-genomics-hub/caddy/files` wherever you run the Compose file. This is a temporary measure until these files (templates, data, etc) are publicly accessible.

@@ -65,13 +65,17 @@ RUN cd /tmp && wget https://napb2023.maizegenetics.net/files/brapi_helper_instal
 
 # Pull Brandon's demo files
 RUN cd /home/${NB_USER}                                                       && \
+    wget https://napb2023.maizegenetics.net/files/napb_2023_bgh_demo_01.ipynb && \
+    wget https://napb2023.maizegenetics.net/files/napb_2023_bgh_demo_02.ipynb && \
     wget https://napb2023.maizegenetics.net/files/napb_demo_data.tar.gz       && \
-    tar -xvf napb_demo_data.tar.gz
+    tar -xvf napb_demo_data.tar.gz                                            && \
+    rm napb_demo_data.tar.gz
 
 # ILCI Templates
 RUN cd /home/${NB_USER}                                             && \
     wget https://napb2023.maizegenetics.net/files/templates.tar.gz  && \
-    tar -xvf templates.tar.gz
+    tar -xvf templates.tar.gz                                       && \
+    rm templates.tar.gz
 
 # Jupyter Notebook config
 ADD jupyter_notebook_config.py /home/${NB_USER}/.jupyter/jupyter_notebook_config.py
