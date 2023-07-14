@@ -16,6 +16,16 @@ OAUTH_CLIENT_SECRET=<ORCID Secret>
 5. Mount a [DigitalOcean Volume](https://docs.digitalocean.com/products/volumes/details/features/) containing the Maize 2.1 data to `/mnt/volume_nyc3_01/maize_2_1_phg/data`
 6. `docker compose -f digital-ocean.yml up -d`
 
+### Building `breeder-notebook`
+The `breeder-notebook` Jupyter Docker stack (using `jupyter/base-notebook`) is built from the [`breeder-notebook/`](./breeder-notebook) directory, using GitHub Actions.
+
+During the image build process, it pulls the following files:
+* https://napb2023.maizegenetics.net/files/brapi_helper_installer.run
+* https://napb2023.maizegenetics.net/files/napb_demo_data.tar.gz
+* https://napb2023.maizegenetics.net/files/templates.tar.gz
+
+Ensure these files are present in `breeder-genomics-hub/files/caddy` wherever you run the Compose file. This is a temporary measure until these files (templates, data, etc) are publicly accessible.
+
 ### To-do
 * Cache Docker image build on GitHub Actions
     * Docker layer caching will not necessarily pick up package changes (e.g. R package installs)
