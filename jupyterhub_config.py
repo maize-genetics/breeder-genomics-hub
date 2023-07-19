@@ -13,10 +13,11 @@ c.Spawner.default_url = '/lab'
 c.Spawner.mem_limit = "1.5G"
 
 c.DockerSpawner.cmd = "start-singleuser.sh"
-
 c.DockerSpawner.remove = True
-
 c.DockerSpawner.debug = True
+
+c.DockerSpawner.prefix = "breeder"
+c.DockerSpawner.name_template = "{prefix}-{raw_username}"
 
 # The following is important for the spawned containers to reach JupyterHub via Docker's DNS
 c.DockerSpawner.hub_connect_url = "http://jupyterhub:8000"
