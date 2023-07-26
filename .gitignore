@@ -1,3 +1,4 @@
 prod.env
 caddy/files/*
 !caddy/files/.gitkeep
+postgres-data/
