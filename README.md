@@ -15,7 +15,9 @@ OAUTH_CLIENT_SECRET=<ORCID Secret>
     * `brapi/application.conf` → `DBPASSWORD = ${PGPASSWORD}`
     * `brapi/config.txt` → `password=$PGPASSWORD`
 5. Mount a [DigitalOcean Volume](https://docs.digitalocean.com/products/volumes/details/features/) containing the Maize 2.1 `pg_dump` data to `/mnt/volume_nyc3_01/20230717_public_maize_2_1`
-6. `docker compose -f digital-ocean.yml up -d`
+6. By default, permanent user data is stored where Docker's volumes are located (either `/var/lib/docker/volumes` or `~/.local/share/docker/volumes` when rootless). If you wish user data to be stored elsewhere, such as on a separate disk, create a soft symlink to that location:
+    * `ln -s /mnt/foo/bar ~/.local/share/docker/volumes`
+7. `docker compose -f digital-ocean.yml up -d`
 
 ### Load Public Maize 2.1 Database Dump
 Before running the Compose script, you must load the public maize data into Postgres. To do so, follow the steps below:

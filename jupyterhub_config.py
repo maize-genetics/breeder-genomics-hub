@@ -33,3 +33,7 @@ c.OrcidOAuthenticator.oauth_callback_url = "https://napb2023.maizegenetics.net/h
 c.OrcidOAuthenticator.client_id = os.environ.get("OAUTH_CLIENT_ID")
 c.OrcidOAuthenticator.client_secret = os.environ.get("OAUTH_CLIENT_SECRET")
 c.OrcidOAuthenticator.allow_all = True # Allow any ORCID iD for the workshop
+
+notebook_dir = "/home/jovyan/work"
+c.DockerSpawner.notebook_dir = notebook_dir
+c.DockerSpawner.volumes = { "breeder-{username}": notebook_dir }
