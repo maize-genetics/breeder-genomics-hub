@@ -1,7 +1,7 @@
 import os
 from dotenv import load_dotenv
 from dockerspawner import DockerSpawner
-from oauthenticator.orcid import OrcidOAuthenticator
+from oauthenticator.generic import GenericOAuthenticator
 
 load_dotenv("prod.env")
 c = get_config()  # noqa
@@ -28,11 +28,17 @@ c.JupyterHub.port = 8000
 c.JupyterHub.ip = "jupyterhub"
 c.JupyterHub.hub_ip = "jupyterhub"
 
-c.JupyterHub.authenticator_class = OrcidOAuthenticator
-c.OrcidOAuthenticator.oauth_callback_url = "https://napb2023.maizegenetics.net/hub/oauth_callback"
-c.OrcidOAuthenticator.client_id = os.environ.get("OAUTH_CLIENT_ID")
-c.OrcidOAuthenticator.client_secret = os.environ.get("OAUTH_CLIENT_SECRET")
-c.OrcidOAuthenticator.allow_all = True # Allow any ORCID iD for the workshop
+c.JupyterHub.authenticator_class = GenericOAuthenticator
+c.GenericOAuthenticator.oauth_callback_url = "https://napb2023.maizegenetics.net/hub/oauth_callback"
+c.GenericOAuthenticator.client_id = os.environ.get("OAUTH_CLIENT_ID")
+c.GenericOAuthenticator.client_secret = os.environ.get("OAUTH_CLIENT_SECRET")
+c.GenericOAuthenticator.login_service = "ORCID iD"
+c.GenericOAuthenticator.authorize_url = "https://orcid.org/oauth/authorize"
+c.GenericOAuthenticator.token_url = "https://orcid.org/oauth/token"
+c.GenericOAuthenticator.scope = ["/authenticate", "openid"]
+c.GenericOAuthenticator.userdata_url = "https://orcid.org/oauth/userinfo"
+c.GenericOAuthenticator.username_claim = "sub"
+c.GenericOAuthenticator.allow_all = True # Allow any ORCID iD for the workshop
 
 notebook_dir = "/home/jovyan/work"
 c.DockerSpawner.notebook_dir = notebook_dir

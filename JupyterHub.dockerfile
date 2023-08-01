@@ -7,9 +7,7 @@ RUN apt-get update  --yes &&                      \
 
 RUN python3 -m pip install --no-cache-dir \
     dockerspawner                         \
+    oauthenticator                        \
     python-dotenv
-
-# Install OAuthenticator ORCID fork
-RUN cd /tmp && git clone https://github.com/matthewwiese/oauthenticator.git && cd oauthenticator && python3 -m pip install -e .
 
 CMD ["jupyterhub", "-f", "/srv/jupyterhub/jupyterhub_config.py"]
