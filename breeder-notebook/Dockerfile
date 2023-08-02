@@ -45,22 +45,16 @@ USER ${NB_UID}
 # Install Conda libraries from environment.yml into base environment
 ADD environment.yml /tmp/environment.yml
 RUN mamba env update --name base --file /tmp/environment.yml
-#RUN --mount=type=cache,target=/opt/conda/pkgs mamba env update --name base --file /tmp/environment.yml
 
 # Install R libraries
 ADD libraries.R /tmp/libraries.R
 RUN Rscript /tmp/libraries.R
-#RUN --mount=type=cache,target=/tmp/R Rscript /tmp/libraries.R
 
 # Additional pip installs
 # NOTE: JupyterHub package version must match deployed Hub version
 RUN pip install --no-cache-dir jupyterhub==4.0.1
 
-# Remove work directory (artifact of Jupyter Docker stack)
-RUN rm -r /home/${NB_USER}/work
-
 # Pull BrAPI Helper package from NAPB workshop file server and install it
-#RUN cd /tmp && wget https://napb2023.maizegenetics.net/files/jupyterlab_brapi_helper-0.1.0.tar.gz && pip install jupyterlab_brapi_helper-0.1.0.tar.gz
 RUN cd /tmp && wget https://napb2023.maizegenetics.net/files/brapi_helper_installer.run && chmod +x brapi_helper_installer.run && ./brapi_helper_installer.run
 
 # Pull Brandon's demo files
