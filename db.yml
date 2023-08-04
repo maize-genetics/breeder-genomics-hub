@@ -1,0 +1,35 @@
+version: '3.9'
+services:
+  phg_brapi:
+    container_name: phg_brapi
+    image: maizegenetics/phg_brapi:latest
+    restart: unless-stopped
+    networks:
+      - brapi_net
+    deploy:
+        resources:
+            limits:
+              memory: 40G
+            reservations:
+              memory: 30G
+    volumes:
+      - ./brapi:/phg/resources
+    environment:
+      JAVA_OPTS: "-Xmx40g -Xms30g"
+    ports:
+       - 127.0.0.1:8080:8080
+  maize_2_1_phg_db:
+    container_name: maize_db
+    image: postgres:14
+    restart: unless-stopped
+    networks:
+      - brapi_net
+    env_file: prod.env
+    volumes:
+      - /mnt/volume_nyc3_01/maize_2_1_phg/data:/var/lib/postgresql/data
+    ports:
+      - 127.0.0.1:5432:5432
+
+networks:
+  brapi_net:
+    name: brapi_net
