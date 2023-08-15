@@ -7,8 +7,26 @@ permalink: /getting-started
 ---
 
 # Getting Started
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras iaculis faucibus felis at tempor. In hac habitasse platea dictumst. Cras malesuada pretium enim, pharetra faucibus enim tincidunt eget. Nulla venenatis euismod dapibus. Quisque ac maximus ante. Donec sed nibh ac urna cursus condimentum lobortis vel nunc. In ullamcorper tincidunt arcu nec ullamcorper. Mauris condimentum ligula vitae urna vulputate, in suscipit ipsum consequat. Quisque fringilla elit eu nisi rutrum, nec auctor velit dapibus. Quisque est urna, tempus feugiat turpis sit amet, condimentum rutrum purus. In ac elementum nibh. 
+## Quick Start
+Start by cloning the repository:
+```bash
+git clone https://github.com/maize-genetics/breeder-genomics-hub
+cd breeder-genomics-hub
+```
 
-Nulla sit amet est egestas, malesuada arcu id, tristique massa. Suspendisse sit amet semper lectus. Proin commodo ipsum id elit molestie, sed aliquam enim tincidunt. Sed sit amet justo non mi placerat interdum. Fusce eget erat eleifend, finibus lacus feugiat, rutrum eros. Vivamus arcu massa, condimentum elementum mattis in, scelerisque at orci. Sed porta lorem sodales feugiat luctus. Mauris pellentesque est et massa congue pretium. Aenean eu sem suscipit, varius ante vitae, pharetra sapien. Nulla at nunc erat. Vestibulum et sem finibus, mattis purus non, laoreet orci. Vivamus dapibus tellus justo, et imperdiet metus lobortis at. Aliquam iaculis mi lorem, ut rutrum massa luctus non. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Ut eu sapien rhoncus lorem consequat luctus. 
+Follow the [ORCID API Tutorial](https://info.orcid.org/documentation/api-tutorials/api-tutorial-get-and-authenticated-orcid-id/) to create an application via the Developer Tools submenu after clicking on your name in the top right of the page. This will allow you to utilize ORCID's OAuth provider, enabling users to sign in with their ORCID iD.
 
-Nullam a enim ullamcorper, aliquam neque non, dictum nibh. Morbi tempor eu ex non scelerisque. In commodo dictum neque vitae lacinia. Praesent ultrices cursus mi eget pretium. Duis sed odio cursus elit sollicitudin lacinia in in ante. Ut eget lobortis tellus, id ultrices magna. Etiam nec ligula rutrum lorem dignissim sagittis. Nullam dictum, ex et vulputate venenatis, elit magna convallis risus, at lacinia quam velit blandit nisi. Phasellus lobortis at lacus id lobortis. Phasellus tempor, neque id posuere lacinia, ipsum quam consectetur sem, sed aliquet libero nisl ut orci. Mauris sed consectetur nunc, vel malesuada massa. In hac habitasse platea dictumst.
+Create an [env file](https://docs.docker.com/compose/environment-variables/env-file/) named `prod.env` containing the OAuth client ID and secret generated for your ORCID application.
+```env
+OAUTH_CLIENT_ID=<APP-123ABC>
+OAUTH_CLIENT_SECRET=<ORCID Secret>
+```
+
+Then it's as simple as using the `hub.yml` Docker Compose config to start your Breeder Genomics Hub:
+
+```bash
+docker compose -f hub.yml up -d
+```
+
+## Customization and Configuration
+TODO: what and how to edit the configs
