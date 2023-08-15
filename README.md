@@ -9,3 +9,17 @@ Please refer to the [documentation website](https://hub.maizegenetics.net) for m
 * [When to use](https://hub.maizegenetics.net/when-to-use) the Breeder Genomics Hub, and alternatives like [TLJH](https://tljh.jupyter.org) and [Z2JH](https://z2jh.jupyter.org)
 
 The [breeder-notebook](https://github.com/maize-genetics/breeder-notebook) Jupyter Docker Stack is the end-user environment, and contains common bioinformatics software useful to plant scientists and breeders, such as [rPHG](https://rphg.maizegenetics.net/) and [rTASSEL](https://rtassel.maizegenetics.net/).
+
+## Development
+### Documentation
+Documentation is hosted via [GitHub Pages](https://pages.github.com/), which provides easy [Jekyll](https://jekyllrb.com/) integration.
+
+To build the docs site locally:
+
+```console
+cd docs
+bundle install
+bundle exec jekyll serve
+```
+
+Requires [Ruby](https://www.ruby-lang.org).

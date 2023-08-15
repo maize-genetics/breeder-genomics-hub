@@ -1,0 +1,30 @@
+.banner {
+    display: flex;
+    align-items: center;
+    justify-content: center;    
+}
+
+#banner {
+    display: none;
+
+    @include mq(md) {
+        display: flex;
+        border-bottom: 1px solid #eeebee;
+    }
+}
+
+#banner-content {
+    display: inline;
+    vertical-align: middle;
+    text-align: center;
+    padding: 0.5em;
+}
+
+#banner-mobile {
+    display: flex;
+
+    @include mq(md) {
+        display: none;
+    }
+}
+
