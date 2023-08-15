@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Getting Started
-nav_order: 1
+nav_order: 2
 description: "Tutorial on how to begin using the Breeder Genomics Hub"
 permalink: /getting-started
 ---
