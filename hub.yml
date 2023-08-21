@@ -10,6 +10,7 @@ services:
     ports:
       - 80:80
       - 443:443
+    env_file: prod.env
     volumes:
       - ./caddy/Caddyfile:/etc/caddy/Caddyfile
       - ./caddy/data:/data
