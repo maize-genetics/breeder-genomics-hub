@@ -34,7 +34,7 @@ services:
       - brapi_net
     env_file: prod.env
     volumes:
-      - /mnt/volume_nyc3_01/maize_2_1_phg/data:/var/lib/postgresql/data
+      - ../postgres-data:/var/lib/postgresql/data
     ports:
       - 127.0.0.1:5432:5432
 
