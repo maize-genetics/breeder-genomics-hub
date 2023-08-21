@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Example Usage
-nav_order: 3
+nav_order: 4
 description: "Example configs with notes on how the Buckler Lab uses the Breeder Genomics Hub"
 permalink: /example
 ---
