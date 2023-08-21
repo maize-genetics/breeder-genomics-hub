@@ -10,6 +10,7 @@ c.JupyterHub.spawner_class = DockerSpawner
 c.DockerSpawner.image = "maizegenetics/breeder-notebook:latest"
 
 c.Spawner.default_url = '/lab'
+c.Spawner.mem_limit = "1.5G"
 
 c.DockerSpawner.cmd = "start-singleuser.sh"
 c.DockerSpawner.remove = True
@@ -37,3 +38,4 @@ c.GenericOAuthenticator.token_url = "https://orcid.org/oauth/token"
 c.GenericOAuthenticator.scope = ["/authenticate", "openid"]
 c.GenericOAuthenticator.userdata_url = "https://orcid.org/oauth/userinfo"
 c.GenericOAuthenticator.username_claim = "sub"
+c.GenericOAuthenticator.allow_all = True # Allow any ORCID iD for the demo

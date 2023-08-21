@@ -4,6 +4,10 @@ services:
     # Override with Caddyfile using additional handle for PHG BrAPI server
     volumes:
       - ./ExampleCaddyfile:/etc/caddy/Caddyfile
+  jupyterhub:
+    # Override Hub config with demo-specific changes
+    volumes:
+      - ./example_config.py:/srv/jupyterhub/jupyterhub_config.py:ro
   phg_brapi:
     container_name: phg_brapi
     image: maizegenetics/phg_brapi:latest
