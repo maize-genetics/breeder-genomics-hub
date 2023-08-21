@@ -61,7 +61,6 @@ c.JupyterHub.services = [
         "command": [
             sys.executable,
             "-m", "jupyterhub_idle_culler",
-            "--ssl-enabled=true",
             "--cull-users=true",
             "--remove-named-servers=true",
             "--cull-every=3600",
