@@ -40,7 +40,7 @@ c.DockerSpawner.notebook_dir = notebook_dir
 c.DockerSpawner.volumes = { "breeder-{username}": notebook_dir }
 ```
 
-#### Choose Where Data Is Stored
+#### **Choose Where Data Is Stored**
 The above config snippet will create a Docker volume with a default mount point. If you are on Linux, it will likely be stored at `~/.local/share/docker/volumes`. Using bind mounts via an absolute path is currently broken ([#453](https://github.com/jupyterhub/dockerspawner/issues/453)), so if an administrator wishes to store persistent data elsewhere, they will need to employ a [symbolic link](https://en.wikipedia.org/wiki/Symbolic_link):
 
 ```console
