@@ -5,6 +5,9 @@
             hide .gitkeep
         }
     }
+    handle /brapi/* {
+        reverse_proxy phg_brapi:8080
+    }
     handle {
         reverse_proxy jupyterhub:8000
     }

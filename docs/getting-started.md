@@ -17,9 +17,12 @@ cd breeder-genomics-hub
 Follow the [ORCID API Tutorial](https://info.orcid.org/documentation/api-tutorials/api-tutorial-get-and-authenticated-orcid-id/) to create an application via the Developer Tools submenu after clicking on your name in the top right of the page. This will allow you to utilize ORCID's OAuth provider, enabling users to sign in with their ORCID iD.
 
 Create an [env file](https://docs.docker.com/compose/environment-variables/env-file/) named `prod.env` containing the OAuth client ID and secret generated for your ORCID application.
+
+Additionally, add the `HUB_DOMAIN` environment variable with the domain that you'll be using to access the Breeder Genomics Hub. This is used by the reverse proxy [Caddy](https://caddyserver.com/) to acquire a TLS certificate automatically via [Let's Encrypt](https://letsencrypt.org/).
 ```
 OAUTH_CLIENT_ID=<APP-123ABC>
 OAUTH_CLIENT_SECRET=<ORCID Secret>
+HUB_DOMAIN=myhub.example.com
 ```
 
 Then it's as simple as using the `hub.yml` Docker Compose config to start your Breeder Genomics Hub:
