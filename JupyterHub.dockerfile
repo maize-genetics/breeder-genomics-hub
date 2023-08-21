@@ -8,6 +8,7 @@ RUN apt-get update  --yes &&                      \
 RUN python3 -m pip install --no-cache-dir \
     dockerspawner                         \
     oauthenticator                        \
+    jupyterhub-idle-culler                \
     python-dotenv
 
 CMD ["jupyterhub", "-f", "/srv/jupyterhub/jupyterhub_config.py"]

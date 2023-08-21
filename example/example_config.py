@@ -1,4 +1,5 @@
 import os
+import sys
 from dotenv import load_dotenv
 from dockerspawner import DockerSpawner
 from oauthenticator.generic import GenericOAuthenticator
@@ -40,7 +41,32 @@ c.GenericOAuthenticator.userdata_url = "https://orcid.org/oauth/userinfo"
 c.GenericOAuthenticator.username_claim = "sub"
 c.GenericOAuthenticator.allow_all = True # Allow any ORCID iD for the demo
 
-# Permanent storage
-notebook_dir = "/home/jovyan/work"
-c.DockerSpawner.notebook_dir = notebook_dir
-c.DockerSpawner.volumes = { "breeder-{username}": notebook_dir }
+# Clean up idle users and their servers on the demo droplet
+c.JupyterHub.load_roles = [
+    {
+        "name": "jupyterhub-idle-culler-role",
+        "scopes": [
+            "list:users",
+            "read:users:activity",
+            "read:servers",
+            "delete:servers",
+            "admin:users",
+        ],
+        "services": ["jupyterhub-idle-culler-service"],
+    }
+]
+c.JupyterHub.services = [
+    {
+        "name": "jupyterhub-idle-culler-service",
+        "command": [
+            sys.executable,
+            "-m", "jupyterhub_idle_culler",
+            "--ssl-enabled=true",
+            "--cull-users=true",
+            "--remove-named-servers=true",
+            "--cull-every=3600",
+            "--max-age=7200",
+            "--timeout=3600",
+        ]
+    }
+]
