@@ -39,3 +39,8 @@ c.GenericOAuthenticator.scope = ["/authenticate", "openid"]
 c.GenericOAuthenticator.userdata_url = "https://orcid.org/oauth/userinfo"
 c.GenericOAuthenticator.username_claim = "sub"
 c.GenericOAuthenticator.allow_all = True # Allow any ORCID iD for the demo
+
+# Permanent storage
+notebook_dir = "/home/jovyan/work"
+c.DockerSpawner.notebook_dir = notebook_dir
+c.DockerSpawner.volumes = { "breeder-{username}": notebook_dir }
