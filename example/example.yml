@@ -3,11 +3,11 @@ services:
   caddy:
     # Override with Caddyfile using additional handle for PHG BrAPI server
     volumes:
-      - ./ExampleCaddyfile:/etc/caddy/Caddyfile
+      - ./example/ExampleCaddyfile:/etc/caddy/Caddyfile
   jupyterhub:
     # Override Hub config with demo-specific changes
     volumes:
-      - ./example_config.py:/srv/jupyterhub/jupyterhub_config.py:ro
+      - ./example/example_config.py:/srv/jupyterhub/jupyterhub_config.py:ro
   phg_brapi:
     container_name: phg_brapi
     image: maizegenetics/phg_brapi:latest
@@ -21,7 +21,7 @@ services:
             reservations:
               memory: 30G
     volumes:
-      - ../brapi:/phg/resources
+      - ./brapi:/phg/resources
     environment:
       JAVA_OPTS: "-Xmx40g -Xms30g"
     ports:
@@ -34,7 +34,7 @@ services:
       - brapi_net
     env_file: prod.env
     volumes:
-      - ../postgres-data:/var/lib/postgresql/data
+      - ./postgres-data:/var/lib/postgresql/data
     ports:
       - 127.0.0.1:5432:5432
 
