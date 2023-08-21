@@ -12,3 +12,8 @@
         reverse_proxy jupyterhub:8000
     }
 }
+
+# Redirect NAPB 2023 workshop to demo
+napb2023.maizegenetics.net {
+    redir "https://{$HUB_DOMAIN}"
+}
