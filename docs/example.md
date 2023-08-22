@@ -14,6 +14,14 @@ This page of the documentation will walk you through how to set up the Breeder G
 
 ## Set Up
 ### Load Public Maize 2.1 Database Dump
+
+{: .note }
+> You will need to add a line to `prod.env` for the Postgres read-only user's password:
+>
+> ```
+> PGPASSWORD=<Password for read_only_user>
+> ```
+
 Before running the Compose script, you must load the public maize data into Postgres. To do so, follow the steps below:
 1. Ensure the most recent public maize release is stored on the mounted `/mnt/volume_nyc3_01/20230717_public_maize_2_1` volume.
 2. Execute the [`load_maize.sh`](https://github.com/maize-genetics/breeder-genomics-hub/blob/main/example/load_maize.sh) script from within the `example/` directory.
@@ -26,3 +34,10 @@ From the root of this repository:
 ```console
 docker compose -f hub.yml -f example/example.yml up -d
 ```
+
+The second `-f` will apply [`example.yml`](https://github.com/maize-genetics/breeder-genomics-hub/blob/main/example/example.yml) as a [Compose merge](https://docs.docker.com/compose/multiple-compose-files/merge/) on top of `hub.yml`. This is a powerful feature of Docker Compose, enabling you to extend the Breeder Genomics Hub without having to modify `hub.yml` itself, providing for easy `git pull` updates.
+
+### Extending / Developing
+Chances are that the Breeder Genomics Hub doesn't satisfy all your lab's requirements. Given this reality, the project is [distributed under the MIT license](https://github.com/maize-genetics/breeder-genomics-hub/blob/main/LICENSE) and users are encouraged to modify or extend the various configuration files in order to best meet their research objectives.
+
+If you encounter problems while doing so, or otherwise have questions, please [open an issue with the "support" label](https://github.com/maize-genetics/breeder-genomics-hub/issues/new?labels=support) and we will do our best to help you out!

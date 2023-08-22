@@ -7,6 +7,10 @@ permalink: /getting-started
 ---
 
 # Getting Started
+
+{: .note }
+> If you have questions about using or deploying your own Breeder Genomics Hub, [create a GitHub issue with the "support" label](https://github.com/maize-genetics/breeder-genomics-hub/issues/new?labels=support)!
+
 ## Quick Start
 Clone the repository:
 ```bash
