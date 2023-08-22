@@ -69,3 +69,10 @@ your_user@your_server:~$ docker inspect breeder-bob
 ```
 
 For further context, see [this GitHub comment](https://github.com/jupyterhub/dockerspawner/issues/453#issuecomment-1665871467).
+
+### About ORCID iD & OAuth
+The configuration for `GenericOAuthenticator` as seen [in the code](https://github.com/maize-genetics/breeder-genomics-hub/blob/main/jupyterhub_config.py#L31-L39), follows the procedure in the [Setup for ORCID iD](https://oauthenticator.readthedocs.io/en/latest/tutorials/provider-specific-setup/providers/generic.html#setup-for-orcid-id) section of the `GenericOAuthenticator` docs.
+
+There are a variety of additional config options available; consult the [`GenericOAuthenticator` API Reference](https://oauthenticator.readthedocs.io/en/latest/reference/api/gen/oauthenticator.generic.html) for more information.
+
+For example, the live playground at [demo.hub.maizegenetics.net](https://demo.hub.maizegenetics.net) allows [any authenticated ORCID iD holder](https://github.com/maize-genetics/breeder-genomics-hub/blob/main/example/example_config.py#L42) to log in.
