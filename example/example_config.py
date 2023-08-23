@@ -72,3 +72,8 @@ c.JupyterHub.services = [
 
 # Jinja Templates
 c.JupyterHub.template_paths = ['/etc/jupyterhub/templates/']
+
+# Override normalize_username to avoid lowercasing (ORCID iDs with trailing valid 'X'
+def normalize_username(self, username):
+    return username
+c.GenericOAuthenticator.normalize_username = normalize_username
