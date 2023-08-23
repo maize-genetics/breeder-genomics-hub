@@ -70,7 +70,19 @@ your_user@your_server:~$ docker inspect breeder-bob
 
 For further context, see [this GitHub comment](https://github.com/jupyterhub/dockerspawner/issues/453#issuecomment-1665871467).
 
-### About ORCID iD & OAuth
+### User Authentication and Authorization
+In JupyterHub, [Authenticators](https://jupyterhub.readthedocs.io/en/stable/reference/authenticators.html) are responsible for managing both authentication (verifying a user is who they say they are) and authorization (verifying if a given user is allowed to do some action). By default, the Breeder Genomics Hub uses ORCID's [OAuth](https://en.wikipedia.org/wiki/OAuth) functionality to enable individuals to log in to a Hub with their existing ORCID iD, removing the need for them to create an account specific to the Hub. For more information on using ORCID for logins, see the below subsection [About ORCID iD & OAuth](#about-orcid-id--oauth).
+
+The general topic of authentication and authorization has security implications, and is therefore outside the scope of this documentation. A good starting point for JupyterHub specifically is their [Authentication and User Basics](https://jupyterhub.readthedocs.io/en/stable/tutorial/getting-started/authenticators-users-basics.html) tutorial page.
+
+For example, if you'd like to limit access to an instance of the Breeder Genomics Hub, simply add the following to your `jupyterhub_config.py`:
+```python
+c.GenericOAuthenticator.allowed_users = { "0000-0002-9079-593X", "0000-0002-3100-371X" }
+```
+
+The above would limit access to [Stephen Hawking](https://orcid.org/0000-0002-9079-593X) and [Ed Buckler](https://orcid.org/0000-0002-3100-371X).
+
+#### **About ORCID iD & OAuth**
 The configuration for `GenericOAuthenticator` as seen [in the code](https://github.com/maize-genetics/breeder-genomics-hub/blob/main/jupyterhub_config.py#L31-L39), follows the procedure in the [Setup for ORCID iD](https://oauthenticator.readthedocs.io/en/latest/tutorials/provider-specific-setup/providers/generic.html#setup-for-orcid-id) section of the `GenericOAuthenticator` docs.
 
 There are a variety of additional config options available; consult the [`GenericOAuthenticator` API Reference](https://oauthenticator.readthedocs.io/en/latest/reference/api/gen/oauthenticator.generic.html) for more information.
