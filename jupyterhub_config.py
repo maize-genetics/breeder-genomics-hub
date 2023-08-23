@@ -38,7 +38,7 @@ c.GenericOAuthenticator.scope = ["/authenticate", "openid"]
 c.GenericOAuthenticator.userdata_url = "https://orcid.org/oauth/userinfo"
 c.GenericOAuthenticator.username_claim = "sub"
 
-# Override normalize_username to avoid lowercasing (ORCID iDs with trailing valid 'X'
+# Override normalize_username to avoid lowercasing (ORCID iDs with trailing valid 'X')
 def normalize_username(self, username):
     return username
 c.GenericOAuthenticator.normalize_username = normalize_username
