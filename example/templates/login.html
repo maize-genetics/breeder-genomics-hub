@@ -1,0 +1,92 @@
+{% extends "page.html" %}
+{% if announcement_login is string %}
+  {% set announcement = announcement_login %}
+{% endif %}
+
+{% block login_widget %}
+{% endblock %}
+
+{% block main %}
+
+{% block login %}
+<div id="login-main" class="container">
+{% block login_container %}
+<div class="service-login">
+  <p id='insecure-login-warning' class='hidden'>
+  Warning: JupyterHub seems to be served over an unsecured HTTP connection.
+  We strongly recommend enabling HTTPS for JupyterHub.
+  </p>
+  <div id='breeder-genomics-hub-landing'>
+    <div id='breeder-genomics-hub-corncob'>
+        <img src="https://demo.hub.maizegenetics.net/files/corn.png"></img>
+    </div>
+    <h1>Breeder Genomics Hub Demo</h1>
+    <p id='breeder-genomics-hub-message'>Users are limited to a maximum of <strong>2 hours</strong> of active use before JupyterLab instances are restarted to save on server resources. This is a demo instance, so please be aware that <strong>no user data is saved</strong> - do not use this for real research!</p>
+    <p>Learn more at: <a href="https://hub.maizegenetics.net">https://hub.maizegenetics.net</a></p>
+    <p>View the source on GitHub: <a href="https://github.com/maize-genetics/breeder-genomics-hub">https://github.com/maize-genetics/breeder-genomics-hub</a></p>
+  </div>
+  <style>
+    div#breeder-genomics-hub-landing {
+      margin: auto;
+      max-width: 30vw;
+      margin-bottom: 3rem;
+    }
+
+  p#breeder-genomics-hub-message {
+      margin-top: 2.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    div#breeder-genomics-hub-corncob {
+      margin: auto;
+      width: 100px;
+      height: 100px;
+      animation-name: spin;
+      animation-duration: 5000ms;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear; 
+      transform-origin: center;
+      margin-bottom: 1rem;
+    }
+
+    div#breeder-genomics-hub-corncob > img {
+      width: 100px;
+      height: 100px;
+    }
+    
+    @keyframes spin {
+        from {
+            transform:rotate(0deg);
+        }
+        to {
+            transform:rotate(360deg);
+        }
+    }
+  </style>
+  <a role="button" class='btn btn-jupyter btn-lg' href='{{ authenticator_login_url | safe }}'>
+    Sign in with {{login_service}}
+  </a>
+</div>
+{% endblock login_container %}
+</div>
+{% endblock login %}
+
+{% endblock %}
+
+{% block script %}
+{{ super() }}
+<script>
+if (window.location.protocol === "http:") {
+  // unhide http warning
+  var warning = document.getElementById('insecure-login-warning');
+  warning.className = warning.className.replace(/\bhidden\b/, '');
+}
+// setup onSubmit feedback
+$('form').submit((e) => {
+  var form = $(e.target);
+  form.find('.feedback-container>input').attr('disabled', true);
+  form.find('.feedback-container>*').toggleClass('hidden');
+  form.find('.feedback-widget>*').toggleClass('fa-pulse');
+});
+</script>
+{% endblock %}

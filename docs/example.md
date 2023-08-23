@@ -37,7 +37,23 @@ docker compose -f hub.yml -f example/example.yml up -d
 
 The second `-f` will apply [`example.yml`](https://github.com/maize-genetics/breeder-genomics-hub/blob/main/example/example.yml) as a [Compose merge](https://docs.docker.com/compose/multiple-compose-files/merge/) on top of `hub.yml`. This is a powerful feature of Docker Compose, enabling you to extend the Breeder Genomics Hub without having to modify `hub.yml` itself, providing for easy `git pull` updates.
 
-### Extending / Developing
+## Extending / Developing
 Chances are that the Breeder Genomics Hub doesn't satisfy all your lab's requirements. Given this reality, the project is [distributed under the MIT license](https://github.com/maize-genetics/breeder-genomics-hub/blob/main/LICENSE) and users are encouraged to modify or extend the various configuration files in order to best meet their research objectives.
 
 If you encounter problems while doing so, or otherwise have questions, please [open an issue with the "support" label](https://github.com/maize-genetics/breeder-genomics-hub/issues/new?labels=support) and we will do our best to help you out!
+
+### Custom Login Page
+Following the [Working with Templates and UI](https://jupyterhub.readthedocs.io/en/stable/howto/templates.html) page of the JupyterHub documentation, [this line is added](https://github.com/maize-genetics/breeder-genomics-hub/blob/main/example/example_config.py#L74) to `jupyterhub_config.py`:
+```python
+c.JupyterHub.template_paths = ['/etc/jupyterhub/templates/']
+```
+
+The example's Compose file also [adds a line](https://github.com/maize-genetics/breeder-genomics-hub/blob/main/example/example.yml#L11) to mount `templates/` onto the above path:
+```yml
+services:
+  jupyterhub:
+    volumes:
+      - ./example/templates:/etc/jupyterhub/templates
+```
+
+Finally, add a `login.html` file that will override the existing template, such as [the one in use on the demo](https://github.com/maize-genetics/breeder-genomics-hub/blob/main/example/templates/login.html). You can customize any of the templates, not just the login page - consult the JupyterHub docs for more information.

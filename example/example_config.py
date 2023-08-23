@@ -69,3 +69,6 @@ c.JupyterHub.services = [
         ]
     }
 ]
+
+# Jinja Templates
+c.JupyterHub.template_paths = ['/etc/jupyterhub/templates/']

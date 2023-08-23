@@ -8,6 +8,7 @@ services:
     # Override Hub config with demo-specific changes
     volumes:
       - ./example/example_config.py:/srv/jupyterhub/jupyterhub_config.py:ro
+      - ./example/templates:/etc/jupyterhub/templates
   phg_brapi:
     container_name: phg_brapi
     image: maizegenetics/phg_brapi:latest
