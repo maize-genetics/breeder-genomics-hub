@@ -70,6 +70,9 @@ your_user@your_server:~$ docker inspect breeder-bob
 
 For further context, see [this GitHub comment](https://github.com/jupyterhub/dockerspawner/issues/453#issuecomment-1665871467).
 
+#### **User-installed Packages (Python, R, etc)**
+Please see the [Installing Additional Software](/software#installing-additional-software) section.
+
 ### User Authentication and Authorization
 In JupyterHub, [Authenticators](https://jupyterhub.readthedocs.io/en/stable/reference/authenticators.html) are responsible for managing both authentication (verifying a user is who they say they are) and authorization (verifying if a given user is allowed to do some action). By default, the Breeder Genomics Hub uses ORCID's [OAuth](https://en.wikipedia.org/wiki/OAuth) functionality to enable individuals to log in to a Hub with their existing ORCID iD, removing the need for them to create an account specific to the Hub. For more information on using ORCID for logins, see the below subsection [About ORCID iD & OAuth](#about-orcid-id--oauth).
 

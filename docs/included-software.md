@@ -32,3 +32,17 @@ The JupyterLab environment comes with [kernels](https://docs.jupyter.org/en/late
 * [Python](https://www.python.org/)
 * [R](https://www.r-project.org/)
 * [Kotlin](https://kotlinlang.org/)
+
+# Installing Additional Software
+
+{: .note }
+> If users wish to install packages via [Apt](https://en.wikipedia.org/wiki/APT_(software)), which requires super-user privileges, the Docker image used by the Hub will have to be modified. One can either [open an issue](https://github.com/maize-genetics/breeder-genomics-hub/issues/new?labels=support) on the breeder-notebook repository to request the package be added, fork the breeder-notebook, or substitute their own Docker image entirely.
+
+The [permanent storage](/getting-started#permanent-storage) can be configured to save the user's entire home directory (everything in `~/`) such that installed packages - e.g. via [Conda](https://conda.io) - persist between server restarts. Although the breeder-notebook is designed to provide researchers the proverbial kitchen sink, it is understood that oftentimes specific dependencies are required in order to reproduce papers or make use of existing/legacy code. Simply adjust the `DockerSpawner` volumes like so:
+```python
+c.DockerSpawner.volumes = { "breeder-{username}": "/home/jovyan" }
+```
+
+This will associate the user's entire home directory with their volume on the host, allowing for *all* files to be persisted. Filesystem usage should be monitored, of course, to prevent accidental overuse of available disk space.
+
+Specific configuration related to modifying package install locations (e.g. where R installs packages) is outside the scope of this documentation.
