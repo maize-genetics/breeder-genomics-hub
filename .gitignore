@@ -2,3 +2,5 @@ prod.env
 caddy/files/*
 !caddy/files/.gitkeep
 postgres-data/
+hub-srv/*
+!hub-srv/.gitkeep
