@@ -38,7 +38,9 @@ c.GenericOAuthenticator.scope = ["/authenticate", "openid"]
 c.GenericOAuthenticator.userdata_url = "https://orcid.org/oauth/userinfo"
 c.GenericOAuthenticator.username_claim = "sub"
 
+# TODO: GenericOAuthenticator does not support this - I think we may end up needing it
+#       See: https://github.com/jupyterhub/oauthenticator/pull/655#issuecomment-1655818727
 # Override normalize_username to avoid lowercasing (ORCID iDs with trailing valid 'X')
-def normalize_username(self, username):
-    return username
-c.GenericOAuthenticator.normalize_username = normalize_username
+#def normalize_username(self, username):
+#    return username
+#c.GenericOAuthenticator.normalize_username = normalize_username

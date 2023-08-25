@@ -4,6 +4,8 @@ from dotenv import load_dotenv
 from dockerspawner import DockerSpawner
 from oauthenticator.generic import GenericOAuthenticator
 
+matt_orcid = "0000-0001-5985-5861" # For admin/management
+
 load_dotenv("prod.env")
 c = get_config()  # noqa
 
@@ -40,9 +42,15 @@ c.GenericOAuthenticator.scope = ["/authenticate", "openid"]
 c.GenericOAuthenticator.userdata_url = "https://orcid.org/oauth/userinfo"
 c.GenericOAuthenticator.username_claim = "sub"
 c.GenericOAuthenticator.allow_all = True # Allow any ORCID iD for the demo
+c.GenericOAuthenticator.admin_users = {matt_orcid}
 
 # Clean up idle users and their servers on the demo droplet
 c.JupyterHub.load_roles = [
+    {
+        "name": "prometheus-metrics",
+        "users": [matt_orcid],
+        "scopes": ["read:metrics"]
+    },
     {
         "name": "jupyterhub-idle-culler-role",
         "scopes": [
@@ -73,7 +81,9 @@ c.JupyterHub.services = [
 # Jinja Templates
 c.JupyterHub.template_paths = ['/etc/jupyterhub/templates/']
 
+# TODO: GenericOAuthenticator does not support this - I think we may end up needing it
+#       See: https://github.com/jupyterhub/oauthenticator/pull/655#issuecomment-1655818727
 # Override normalize_username to avoid lowercasing (ORCID iDs with trailing valid 'X')
-def normalize_username(self, username):
-    return username
-c.GenericOAuthenticator.normalize_username = normalize_username
+#def normalize_username(self, username):
+#    return username
+#c.GenericOAuthenticator.normalize_username = normalize_username

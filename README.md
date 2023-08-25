@@ -23,3 +23,5 @@ bundle exec jekyll serve
 ```
 
 Requires [Ruby](https://www.ruby-lang.org).
+
+*Note that in the docs there are places where lines of code are linked to on GitHub. If certain files are changed, it will require these links be updated. Use `grep -r '#L' .` to find them.*

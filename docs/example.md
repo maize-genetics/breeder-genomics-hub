@@ -43,7 +43,7 @@ Chances are that the Breeder Genomics Hub doesn't satisfy all your lab's require
 If you encounter problems while doing so, or otherwise have questions, please [open an issue with the "support" label](https://github.com/maize-genetics/breeder-genomics-hub/issues/new?labels=support) and we will do our best to help you out!
 
 ### Custom Login Page
-Following the [Working with Templates and UI](https://jupyterhub.readthedocs.io/en/stable/howto/templates.html) page of the JupyterHub documentation, [this line is added](https://github.com/maize-genetics/breeder-genomics-hub/blob/main/example/example_config.py#L74) to `jupyterhub_config.py`:
+Following the [Working with Templates and UI](https://jupyterhub.readthedocs.io/en/stable/howto/templates.html) page of the JupyterHub documentation, [this line is added](https://github.com/maize-genetics/breeder-genomics-hub/blob/main/example/example_config.py#L82) to `jupyterhub_config.py`:
 ```python
 c.JupyterHub.template_paths = ['/etc/jupyterhub/templates/']
 ```
