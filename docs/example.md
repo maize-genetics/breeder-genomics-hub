@@ -42,6 +42,13 @@ Chances are that the Breeder Genomics Hub doesn't satisfy all your lab's require
 
 If you encounter problems while doing so, or otherwise have questions, please [open an issue with the "support" label](https://github.com/maize-genetics/breeder-genomics-hub/issues/new?labels=support) and we will do our best to help you out!
 
+### Monitoring and Usage Metrics
+JupyterHub provides [a Prometheus-compatible endpoint](https://jupyterhub.readthedocs.io/en/stable/reference/monitoring.html) at `/metrics` that can be used to monitor user activity. This is useful for gauging resource usage and user engagement, as well as for monitoring abuse.
+
+In order to use it, a user must be granted the `read:metrics` permission, as can be seen [in the demo's config](https://github.com/maize-genetics/breeder-genomics-hub/blob/main/example/example_config.py#L49-L53).
+
+Then the user must [create an API token](https://jupyterhub.readthedocs.io/en/stable/howto/rest.html#create-an-api-token) from the JupyterHub web interface before issuing requests to the metrics endpoint.
+
 ### Custom Login Page
 Following the [Working with Templates and UI](https://jupyterhub.readthedocs.io/en/stable/howto/templates.html) page of the JupyterHub documentation, [this line is added](https://github.com/maize-genetics/breeder-genomics-hub/blob/main/example/example_config.py#L82) to `jupyterhub_config.py`:
 ```python
