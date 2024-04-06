@@ -17,7 +17,7 @@
                     | where_exp:"item", "item.nav_exclude != true"
                     | size %}
         {% if pages_top_size > 0 %}
-            {% include nav.html pages=site.html_pages key=nil %}
+            {% include components/nav.html pages=site.html_pages key=nil %}
         {% endif %}
         {%- if site.nav_external_links -%}
             <ul class="nav-list">
@@ -48,15 +48,15 @@
                                     </button>
                                     {%- endif -%}
                                     <div class="nav-category">{{ collection_value.name }}</div>
-                                    {% include nav.html pages=collection key=collection_key %}
+                                    {% include components/nav.html pages=collection key=collection_key %}
                                 </li>
                             </ul>
                         {% else %}
                             <div class="nav-category">{{ collection_value.name }}</div>
-                            {% include nav.html pages=collection key=collection_key %}
+                            {% include components/nav.html pages=collection key=collection_key %}
                         {% endif %}
                     {% else %}
-                        {% include nav.html pages=collection key=collection_key %}
+                        {% include components/nav.html pages=collection key=collection_key %}
                     {% endif %}
                 {% endif %}
             {% endfor %}
