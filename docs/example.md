@@ -8,9 +8,7 @@ permalink: /example
 
 # Example Usage
 ## How the Buckler Lab uses the Breeder Genomics Hub
-You may have noticed the link to [demo.hub.maizegenetics.net](https://demo.hub.maizegenetics.net) at the top of all documentation pages. This is a live playground available to the public for experimenting with the Breeder Genomics Hub, set up to mimic how our lab makes use of the Jupyter ecosystem.
-
-This page of the documentation will walk you through how to set up the Breeder Genomics Hub exactly like the demo, utilizing PostgreSQL and PHG BrAPI containers to enable users to make queries from the Jupyter environment, via packages like [rPHG](https://rphg.maizegenetics.net) and [rTASSEL](https://rtassel.maizegenetics.net).
+This page of the documentation will walk you through how to set up the Breeder Genomics Hub, utilizing PostgreSQL and PHG BrAPI containers to enable users to make queries from the Jupyter environment, via packages like [rPHG](https://rphg.maizegenetics.net) and [rTASSEL](https://rtassel.maizegenetics.net).
 
 ## Set Up
 ### Load Public Maize 2.1 Database Dump
@@ -45,7 +43,7 @@ If you encounter problems while doing so, or otherwise have questions, please [o
 ### Monitoring and Usage Metrics
 JupyterHub provides [a Prometheus-compatible endpoint](https://jupyterhub.readthedocs.io/en/stable/reference/monitoring.html) at `/metrics` that can be used to monitor user activity. This is useful for gauging resource usage and user engagement, as well as for monitoring abuse.
 
-In order to use it, a user must be granted the `read:metrics` permission, as can be seen [in the demo's config](https://github.com/maize-genetics/breeder-genomics-hub/blob/main/example/example_config.py#L49-L53).
+In order to use it, a user must be granted the `read:metrics` permission, as can be seen [in the config](https://github.com/maize-genetics/breeder-genomics-hub/blob/main/example/example_config.py#L49-L53).
 
 Then the user must [create an API token](https://jupyterhub.readthedocs.io/en/stable/howto/rest.html#create-an-api-token) from the JupyterHub web interface before issuing requests to the metrics endpoint.
 
@@ -63,4 +61,4 @@ services:
       - ./example/templates:/etc/jupyterhub/templates
 ```
 
-Finally, add a `login.html` file that will override the existing template, such as [the one in use on the demo](https://github.com/maize-genetics/breeder-genomics-hub/blob/main/example/templates/login.html). You can customize any of the templates, not just the login page - consult the JupyterHub docs for more information.
+Finally, add a `login.html` file that will override the existing template, such as [this one](https://github.com/maize-genetics/breeder-genomics-hub/blob/main/example/templates/login.html). You can customize any of the templates, not just the login page - consult the JupyterHub docs for more information.
