@@ -13,7 +13,6 @@ The Breeder Genomics Hub is a batteries-included JupyterHub distribution for bre
 {: .fs-6 .fw-300 }
 
 [Getting Started]({% link getting-started.md %}){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2 }
-[Try the Demo!](https://demo.hub.maizegenetics.net){: .btn .fs-5 .mb-4 .mb-md-0 }
 
 ---
 
