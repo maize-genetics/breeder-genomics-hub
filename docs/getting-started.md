@@ -90,4 +90,4 @@ The configuration for `GenericOAuthenticator` as seen [in the code](https://gith
 
 There are a variety of additional config options available; consult the [`GenericOAuthenticator` API Reference](https://oauthenticator.readthedocs.io/en/latest/reference/api/gen/oauthenticator.generic.html) for more information.
 
-For example, the live playground at [demo.hub.maizegenetics.net](https://demo.hub.maizegenetics.net) allows [any authenticated ORCID iD holder](https://github.com/maize-genetics/breeder-genomics-hub/blob/main/example/example_config.py#L44) to log in.
+For example, this config allows [any authenticated ORCID iD holder](https://github.com/maize-genetics/breeder-genomics-hub/blob/main/example/example_config.py#L44) to log in.
