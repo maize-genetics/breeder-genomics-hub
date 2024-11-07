@@ -1,6 +1,6 @@
 title: Breeder Genomics Hub
 description: "The Breeder Genomics Hub is a batteries-included JupyterHub distribution for breeders (Pangeo for plant scientists)"
-remote_theme: just-the-docs/just-the-docs
+remote_theme: just-the-docs/just-the-docs@v0.9.0
 plugins:
   - jekyll-remote-theme
 
