@@ -1,3 +1,4 @@
+
 version: '3.9'
 services:
   caddy:
@@ -30,7 +31,7 @@ services:
       - ./hub-srv:/srv/jupyterhub # Used to persist jupyterhub.sqlite
       - "./jupyterhub_config.py:/srv/jupyterhub/jupyterhub_config.py:ro"
       - "./prod.env:/srv/jupyterhub/prod.env:ro"
-      - "/run/user/1001/docker.sock:/var/run/docker.sock" # Access rootless socket associated with user
+      - "/run/user/${UID}/docker.sock:/var/run/docker.sock" # Access rootless socket associated with user
 
 networks:
   hub_net:
