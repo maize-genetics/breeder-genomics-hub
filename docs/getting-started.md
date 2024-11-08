@@ -100,3 +100,13 @@ The configuration for `GenericOAuthenticator` as seen [in the code](https://gith
 There are a variety of additional config options available; consult the [`GenericOAuthenticator` API Reference](https://oauthenticator.readthedocs.io/en/latest/reference/api/gen/oauthenticator.generic.html) for more information.
 
 For example, this config allows [any authenticated ORCID iD holder](https://github.com/maize-genetics/breeder-genomics-hub/blob/main/example/example_config.py#L44) to log in.
+
+### Redirect URI
+By default the redirect URI used by `GenericOAuthenticator` is based on the `HUB_DOMAIN` environment variable specified in the `prod.env` file.
+
+If you wish to use a different redirect URI, provide a `REDIRECT_URI` value in your `prod.env` file:
+```
+REDIRECT_URI=https://thirdparty.com/oauth/callback1
+```
+
+Please refer to [this](https://info.orcid.org/ufaqs/how-do-redirect-uris-work/) ORCID FAQ for more information about how redirect URIs work.

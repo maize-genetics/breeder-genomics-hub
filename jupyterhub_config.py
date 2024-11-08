@@ -27,8 +27,9 @@ c.JupyterHub.port = 8000
 c.JupyterHub.ip = "jupyterhub"
 c.JupyterHub.hub_ip = "jupyterhub"
 
+redirect_uri = os.environ.get('REDIRECT_URI')
 c.JupyterHub.authenticator_class = GenericOAuthenticator
-c.GenericOAuthenticator.oauth_callback_url = f"https://{os.environ.get('HUB_DOMAIN')}/hub/oauth_callback"
+c.GenericOAuthenticator.oauth_callback_url = redirect_uri if redirect_uri else f"https://{os.environ.get('HUB_DOMAIN')}/hub/oauth_callback"
 c.GenericOAuthenticator.client_id = os.environ.get("OAUTH_CLIENT_ID")
 c.GenericOAuthenticator.client_secret = os.environ.get("OAUTH_CLIENT_SECRET")
 c.GenericOAuthenticator.login_service = "ORCID iD"
