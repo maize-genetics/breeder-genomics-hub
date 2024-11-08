@@ -95,7 +95,7 @@ c.GenericOAuthenticator.allowed_users = { "0000-0002-9079-593X", "0000-0002-3100
 The above would limit access to [Stephen Hawking](https://orcid.org/0000-0002-9079-593X) and [Ed Buckler](https://orcid.org/0000-0002-3100-371X).
 
 #### **About ORCID iD & OAuth**
-The configuration for `GenericOAuthenticator` as seen [in the code](https://github.com/maize-genetics/breeder-genomics-hub/blob/main/jupyterhub_config.py#L31-L39), follows the procedure in the [Setup for ORCID iD](https://oauthenticator.readthedocs.io/en/latest/tutorials/provider-specific-setup/providers/generic.html#setup-for-orcid-id) section of the `GenericOAuthenticator` docs.
+The configuration for `GenericOAuthenticator` as seen [in the code](https://github.com/maize-genetics/breeder-genomics-hub/blob/main/jupyterhub_config.py#L32-L40), follows the procedure in the [Setup for ORCID iD](https://oauthenticator.readthedocs.io/en/latest/tutorials/provider-specific-setup/providers/generic.html#setup-for-orcid-id) section of the `GenericOAuthenticator` docs.
 
 There are a variety of additional config options available; consult the [`GenericOAuthenticator` API Reference](https://oauthenticator.readthedocs.io/en/latest/reference/api/gen/oauthenticator.generic.html) for more information.
 
