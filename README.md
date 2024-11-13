@@ -8,7 +8,11 @@ Please refer to the [documentation website](https://hub.maizegenetics.net) for m
 * [Example with notes](https://hub.maizegenetics.net/example) on how the Buckler Lab uses the Breeder Genomics Hub alongside a RESTful [PHG](https://www.maizegenetics.net/phg) web server (see the [`example/`](./example) directory of this repo for configs)
 * [When to use](https://hub.maizegenetics.net/when-to-use) the Breeder Genomics Hub, and alternatives like [TLJH](https://tljh.jupyter.org) and [Z2JH](https://z2jh.jupyter.org)
 
-The [breeder-notebook](https://github.com/maize-genetics/breeder-notebook) Jupyter Docker Stack is the end-user environment, and contains common bioinformatics software useful to plant scientists and breeders, such as [rPHG](https://rphg.maizegenetics.net/) and [rTASSEL](https://rtassel.maizegenetics.net/).
+The [breeder-notebook](https://github.com/maize-genetics/breeder-notebook) Jupyter Docker Stack is the end-user environment, and contains common bioinformatics software useful to plant scientists and breeders, such as [rPHG](https://rphg.maizegenetics.net/) and [rTASSEL](https://rtassel.maizegenetics.net/). Before running the Breeder Genomics Hub, make sure to install this notebook image:
+
+```
+docker pull maizegenetics/breeder-notebook:latest
+```
 
 ## Development
 ### Documentation

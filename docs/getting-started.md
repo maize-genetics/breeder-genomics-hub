@@ -36,6 +36,12 @@ The `UID` value above is interpolated within the `hub.yml` Docker Compose config
 echo "UID=$UID" >> prod.env
 ```
 
+Next, make sure you have the [breeder-notebook](https://github.com/maize-genetics/breeder-notebook) Jupyter image. This is the environment used for each client, so needs to be present, otherwise starting up a user's server will time out. Get it via:
+
+```
+docker pull maizegenetics/breeder-notebook:latest
+```
+
 Then it's as simple as using `hub.yml` to start your Breeder Genomics Hub:
 
 ```bash
@@ -106,7 +112,9 @@ By default the redirect URI used by `GenericOAuthenticator` is based on the `HUB
 
 If you wish to use a different redirect URI, provide a `REDIRECT_URI` value in your `prod.env` file:
 ```
-REDIRECT_URI=https://thirdparty.com/oauth/callback1
+REDIRECT_URI=https://thirdparty.com/hub/oauth_callback
 ```
+
+If using a custom redirect URI, ensure that you use the `/oauth_callback` endpoint, otherwise authentication will be successful but you will encounter a 404 error.
 
 Please refer to [this](https://info.orcid.org/ufaqs/how-do-redirect-uris-work/) ORCID FAQ for more information about how redirect URIs work.
