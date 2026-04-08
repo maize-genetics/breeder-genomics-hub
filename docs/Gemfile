@@ -10,7 +10,7 @@ gem "jekyll-remote-theme"
 gem "jekyll-seo-tag"
 gem "jekyll-include-cache"
 
-# Pin transitive deps addressed by ruby-advisory-db / Dependabot
+# Seurity updates
 gem "addressable", ">= 2.9.0"
 gem "rexml", ">= 3.3.9"
 gem "webrick", ">= 1.8.2"
